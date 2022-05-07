@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -20,7 +21,6 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import com.google.accompanist.insets.statusBarsPadding
 import com.marysugar.hilt_http_compose_sample.model.Poster
 import com.marysugar.hilt_http_compose_sample.ui.custom.NetworkImage
-import com.marysugar.hilt_http_compose_sample.ui.custom.StaggeredVerticalGrid
 import com.marysugar.hilt_http_compose_sample.ui.theme.HiltHttpComposeSampleTheme
 
 @Composable
@@ -35,11 +35,11 @@ fun HomePosters(
       .verticalScroll(rememberScrollState())
       .background(MaterialTheme.colors.background)
   ) {
-    StaggeredVerticalGrid(
-      maxColumnWidth = 220.dp,
-      modifier = Modifier.padding(4.dp)
-    ) {
-      posters.forEach { poster ->
+    posters.forEach { poster ->
+      Card(
+        shape = RoundedCornerShape(20.dp),
+        modifier = Modifier.padding(50.dp)
+      ) {
         HomePoster(
           poster = poster,
           selectPoster = selectPoster
@@ -57,13 +57,9 @@ private fun HomePoster(
 ) {
   Surface(
     modifier = modifier
-      .padding(4.dp)
       .clickable(
         onClick = { selectPoster(poster.id) }
       ),
-    color = MaterialTheme.colors.onBackground,
-    elevation = 8.dp,
-    shape = RoundedCornerShape(8.dp)
   ) {
     ConstraintLayout {
       val (image, title, content) = createRefs()
