@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">hilt_http_compose_sample</string>
+    <string name="database">DisneyCompose.db</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_library">Library</string>
+    <string name="menu_radio">Radio</string>
 </resources>
